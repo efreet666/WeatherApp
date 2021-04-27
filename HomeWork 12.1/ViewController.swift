@@ -7,17 +7,19 @@
 
 import UIKit
 import Foundation
-import Alamofire
+
+var models = [Daily]()
+
+var current1: Current?
+var currentWeather: [Current]?
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
 
-    @IBOutlet var table: UITableView!
-     
-    var models = [Daily]()
-
-    var current: Current?
-    var currentWeather: [Current]?
+   @IBOutlet var table: UITableView!
+    
+    getOutlet(outlet: self.table)
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,49 +27,46 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.delegate = self
         table.dataSource = self
         
-        let url = "\(URLConst)"
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
-            
-            //validation
-            guard let data = data, error == nil else{
-                print("something went wrong")
-                return
-            }
-           
-            //convert data to models
-            
-            var json: weatherResponse?
-            do{
-                json = try JSONDecoder().decode(weatherResponse.self, from: data)
-            }
-            catch{
-                print("error: \(error)")
-            }
-            guard let result = json else{
-            return
-            }
-            
-            let entries = result.daily
-            
-            self.models.append(contentsOf: entries!)
-            
-            let current = result.current
-            self.current = current
+//        let url = "\(URLConst)"
+//        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+//            
+//            //validation
+//            guard let data = data, error == nil else{
+//                print("something went wrong")
+//                return
+//            }
+//           
+//            //convert data to models
+//            
+//            var json: weatherResponse?
+//            do{
+//                json = try JSONDecoder().decode(weatherResponse.self, from: data)
+//            }
+//            catch{
+//                print("error: \(error)")
+//            }
+//            guard let result = json else{
+//            return
+//            }
+//            
+//            let entries = result.daily
+//            
+//            self.models.append(contentsOf: entries!)
+//            
+//            let current = result.current
+//            self.current = current
+//        
+//            
+//            //update user inteface
+//            DispatchQueue.main.async {
+//                self.table.reloadData()
+//                self.table.tableHeaderView = self.createTableHeader()
+//            }
+//        }) .resume()
+//        
+//    }
         
-            
-            //update user inteface
-            DispatchQueue.main.async {
-                self.table.reloadData()
-                self.table.tableHeaderView = self.createTableHeader()
-            }
-        }) .resume()
-        
-        
-        
-
-           
     }
-    
     func createTableHeader() -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width ))
         headerView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -85,7 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tempLabel.font = UIFont(name: "Helvetica-Bold", size: 35)
         weatherLabel.textAlignment = .center
         weatherLabel.font = UIFont(name: "Helvetica", size: 25)
-        tempLabel.text = "\((Int((self.current?.temp)!)) - 271)°"
+        tempLabel.text = "\((Int((current1?.temp)!)) - 271)°"
         
         locationLabel.text = "Moscow"
         weatherLabel.text = "Сloudly" //не разобрался как правильно вывести текущее состояние погоды

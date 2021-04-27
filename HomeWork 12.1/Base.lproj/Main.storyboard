@@ -38,19 +38,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="bY1-pf-a8g" id="j2o-9B-SJr"/>
-                                    <outlet property="delegate" destination="bY1-pf-a8g" id="fCv-n7-F1W"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26g-zL-2gT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Погода с Alamofire" id="UOd-7f-a65"/>
-                    <connections>
-                        <outlet property="table" destination="Nbf-OB-qMd" id="hY7-D9-m4A"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMg-vt-NKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

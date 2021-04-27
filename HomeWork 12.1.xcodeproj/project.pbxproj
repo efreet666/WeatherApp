@@ -19,6 +19,8 @@
 		F5978AEF25FCBE0400EA5861 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5978AED25FCBE0400EA5861 /* WeatherCollectionViewCell.swift */; };
 		F5978AF025FCBE0400EA5861 /* WeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5978AEE25FCBE0400EA5861 /* WeatherCollectionViewCell.xib */; };
 		F5ED18AC2638846A0049BC35 /* URLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED18AB2638846A0049BC35 /* URLViewController.swift */; };
+		F5ED18B7263892E40049BC35 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED18B6263892E40049BC35 /* NetworkingViewController.swift */; };
+		F5ED18BC2638A0780049BC35 /* dataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED18BB2638A0780049BC35 /* dataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		F5978AED25FCBE0400EA5861 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5978AEE25FCBE0400EA5861 /* WeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCollectionViewCell.xib; sourceTree = "<group>"; };
 		F5ED18AB2638846A0049BC35 /* URLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLViewController.swift; sourceTree = "<group>"; };
+		F5ED18B6263892E40049BC35 /* NetworkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
+		F5ED18BB2638A0780049BC35 /* dataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,9 @@
 				F5978AC725FB89CE00EA5861 /* AppDelegate.swift */,
 				F5978AC925FB89CE00EA5861 /* SceneDelegate.swift */,
 				F5978ACB25FB89CE00EA5861 /* ViewController.swift */,
+				F5ED18BB2638A0780049BC35 /* dataModel.swift */,
+				F5ED18B6263892E40049BC35 /* NetworkingViewController.swift */,
 				F5ED18AB2638846A0049BC35 /* URLViewController.swift */,
-				F5F52AEF260523FC00E41B06 /* Alamofire */,
 				F5978ACD25FB89CE00EA5861 /* Main.storyboard */,
 				F5978AD025FB89D300EA5861 /* Assets.xcassets */,
 				F5978AD225FB89D300EA5861 /* LaunchScreen.storyboard */,
@@ -121,13 +126,6 @@
 				F5978AEE25FCBE0400EA5861 /* WeatherCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
-		F5F52AEF260523FC00E41B06 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Alamofire;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,10 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ED18B7263892E40049BC35 /* NetworkingViewController.swift in Sources */,
 				F5ED18AC2638846A0049BC35 /* URLViewController.swift in Sources */,
 				F5978AE425FB8DF200EA5861 /* WeatherTableViewCell.swift in Sources */,
 				F5978ACC25FB89CE00EA5861 /* ViewController.swift in Sources */,
 				F5978AEF25FCBE0400EA5861 /* WeatherCollectionViewCell.swift in Sources */,
+				F5ED18BC2638A0780049BC35 /* dataModel.swift in Sources */,
 				F5978AC825FB89CE00EA5861 /* AppDelegate.swift in Sources */,
 				F5978ACA25FB89CE00EA5861 /* SceneDelegate.swift in Sources */,
 			);
