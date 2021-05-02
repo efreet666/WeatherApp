@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-var models = [Daily]()
+ var models = [Daily]()
 
 var current1: Current?
 var currentWeather: [Current]?

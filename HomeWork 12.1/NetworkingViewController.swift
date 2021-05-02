@@ -6,16 +6,9 @@
 //
 
 import UIKit
+import Foundation
 
-public class NetworkingViewController: UIViewController {
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-
-//        var table2: UITableView
-//        func getOutlet(outlet: UITableView){
-//            table2 = outlet
-//        }
+public class NetworkingViewController {
         
         let url = "\(URLConst)"
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
