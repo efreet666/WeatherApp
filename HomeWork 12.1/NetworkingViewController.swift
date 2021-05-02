@@ -12,10 +12,10 @@ public class NetworkingViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        var table2: UITableView
-        func getOutlet(outlet: UITableView){
-            table2 = outlet
-        }
+//        var table2: UITableView
+//        func getOutlet(outlet: UITableView){
+//            table2 = outlet
+//        }
         
         let url = "\(URLConst)"
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
@@ -49,8 +49,8 @@ public class NetworkingViewController: UIViewController {
             
             //update user inteface
             DispatchQueue.main.async {
-                table2.reloadData()
-                table2.tableHeaderView = createTableHeader()
+                table.reloadData()
+                table.tableHeaderView = createTableHeader()
             }
         }) .resume()
         
