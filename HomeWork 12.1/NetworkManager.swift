@@ -8,31 +8,47 @@
 import Foundation
 
 enum ObtainResult {
-    case success(response: weatherResponse)
+    case success(response: WeatherSomeDays)
     case failure(error: Error)
 }
 class NetworkManager {
     
-    func obtainPosts() {
-//            let session = URLSession(configuration: sessionConfiguration)
-        
+    let sessionConfiguration = URLSessionConfiguration.default
+    let session = URLSession.shared
+    let decoder = JSONDecoder()
+    
+    func obtainPosts(completion: @escaping (ObtainResult) -> Void) {
+       
         guard let url = URL(string: "\(URLConst)") else {
             return
         }
         
         session.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let strongSelf = self else { return }
+            
+            var result: ObtainResult
+            
+            defer{
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+            guard let strongSelf = self else {
+                result = .failure(error: error!)
+                return
+            }
             if error == nil, let parsData = data{
                 
-                guard let posts = try? strongSelf.decoder.decode(weatherResponse.self, from: parsData) //maybe it's list of objects? -> []{
+                guard let posts = try? strongSelf.decoder.decode(WeatherSomeDays.self, from: parsData)
                 else {
+                    result = .failure(error: error!)
                     return
                 }
                 
-                
-            }else{
-                print("Error: \(error?.localizedDescription)")
+                result = .success(response: posts)
+            } else {
+                result = .failure(error: error!)
             }
+            completion(result)
         }
         .resume()
     }

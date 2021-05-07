@@ -37,8 +37,7 @@ class WeatherTableViewCell: UITableViewCell {
         self.lowTempLabel.text = "\(Int((model.temp?.min)!)-271)°"
         self.highTempLabel.text = "\(Int((model.temp?.max)!)-271)°"
         self.dayLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(model.dt!)))
-        self.iconImageView1.image = UIImage(named: "cloudy-day")
-        print(WeatherElement.CodingKeys.icon.description)
+        self.iconImageView1.image = UIImage(named: "\(model.weather!.first!.main!)")
     }
     func getDayForDate(_ date: Date?) -> String{
         guard let inputDate = date else{
