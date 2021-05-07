@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum ObtainPostsResult{
-    case success(posts:)
+enum ObtainResult {
+    case success(response: weatherResponse)
+    case failure(error: Error)
 }
 class NetworkManager {
     
