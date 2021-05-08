@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import Alamofire
 
 enum ObtainResult {
     case success(response: WeatherSomeDays)
     case failure(error: Error)
 }
 class NetworkManager {
+    
+    //MARK: - URLSession
     
     let sessionConfiguration = URLSessionConfiguration.default
     let session = URLSession.shared
@@ -51,5 +54,24 @@ class NetworkManager {
             completion(result)
         }
         .resume()
+    }
+    
+    //MARK: - Alamofire
+    
+    enum ObtainWeatherResult {
+        case success(response: WeatherSomeDays)
+        case failure(error: Error)
+    }
+    
+    func alamRequest(complition: @escaping (ObtainWeatherResult) -> Void){
+        AF.request(URLConst).responseDecodable(of: WeatherSomeDays.self) { (responseJSON) in
+            switch responseJSON.result{
+            case .success(let JSON):
+                complition(.success(response: JSON))
+            case .failure(let error):
+                complition(.failure(error: error))
+            }
+            
+        }
     }
 }

@@ -29,7 +29,7 @@
         <!--Погода с Alamofire-->
         <scene sceneID="z2w-hN-5ea">
             <objects>
-                <viewController id="ncT-b7-row" customClass="AlamofireWeather_VC" customModule="HomeWork_12_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ncT-b7-row" customClass="AlamofireViewController" customModule="HomeWork_12_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bY1-pf-a8g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Погода с Alamofire" id="UOd-7f-a65"/>
+                    <connections>
+                        <outlet property="tableOutlet" destination="Nbf-OB-qMd" id="Swy-si-Uyf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMg-vt-NKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
