@@ -68,11 +68,11 @@ extension AlamofireViewController: UITableViewDataSource, UITableViewDelegate{
         DispatchQueue.main.async {
             let cell = tableView.cellForRow(at: indexPath) as! WeatherTableViewCell
             let day = self.dailyW[indexPath.row]
-            self.tableHeader.dateOutlet.text = "\((Date(timeIntervalSince1970: Double(day.dt!))))"
-            self.tableHeader.cityOutlet.text = "Moscow" //Only Moscow
-            self.tableHeader.mainWeatherOutlet.text = "\(String(describing: day.weather))"
-            self.tableHeader.windSpeedOutlet.text = "Wind speed: \(Int(day.windSpeed!)) m/s"
-            //self.tableHeader.ImageWeatherOutlet.image = cell.iconImageView1.image
+            self.tableHeader.feelsLikeLabelOutlet.text = ""
+            self.tableHeader.dateLabelOutlet.text = "\(self.getDayForDate(Date(timeIntervalSince1970: Double(day.dt!))))"
+            self.tableHeader.cityLabelOutlet.text = "Moscow" //Only Moscow
+            self.tableHeader.windSpeedLabelOutlet.text = "Wind speed: \(Int(day.windSpeed!)) m/s"
+            self.tableHeader.imageOutlet.image = cell.iconImageView1.image
             self.tableOutlet.tableHeaderView = self.tableHeader
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -81,15 +81,23 @@ extension AlamofireViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath == IndexPath(row: 0, section: 0) {
             DispatchQueue.main.async {
-                self.tableHeader.dateOutlet.text = "\((Date(timeIntervalSince1970: Double(self.dailyW[0].dt!))))"
-                self.tableHeader.tempOutlet.text = "Max: \(Int(self.dailyW[0].temp!.max!)-271)°C"
-                self.tableHeader.windSpeedOutlet.text = "Wind speed: \(Int(self.dailyW[0].windSpeed!)) m/s"
-                self.tableHeader.ImageWeatherOutlet.image = (cell as! WeatherTableViewCell).iconImageView1.image
+                self.tableHeader.feelsLikeLabelOutlet.text = "Feels like: \(Int(self.currentW.feelsLike!)-271)°C"
+                self.tableHeader.dateLabelOutlet.text = "\(self.getDayForDate(Date(timeIntervalSince1970: Double(self.dailyW[0].dt!))))"
+                self.tableHeader.tempLabelOutlet.text = "\(Int(self.currentW!.temp!)-271)°C"
+                self.tableHeader.windSpeedLabelOutlet.text = "Wind speed: \(Int(self.dailyW[0].windSpeed!)) m/s"
+                self.tableHeader.imageOutlet.image = (cell as! WeatherTableViewCell).iconImageView1.image
                 self.tableOutlet.tableHeaderView = self.tableHeader
             }
         }
     }
-    
-    
+    func getDayForDate(_ date: Date?) -> String{
+        guard let inputDate = date else{
+            return""
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM"
+        return formatter.string(from: inputDate)
+    }
     
 }

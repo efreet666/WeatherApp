@@ -9,13 +9,14 @@ import UIKit
 
 class TableHeader: UIView {
 
-    @IBOutlet weak var dateOutlet: UILabel!
-    @IBOutlet weak var tempOutlet: UILabel!
-    @IBOutlet weak var windSpeedOutlet: UILabel!
-    @IBOutlet weak var ImageWeatherOutlet: UIImageView!
-    @IBOutlet weak var feelsLikeOutlet: UILabel!
-    @IBOutlet weak var mainWeatherOutlet: UILabel!
-    @IBOutlet weak var cityOutlet: UILabel!
+    @IBOutlet weak var windSpeedLabelOutlet: UILabel!
+    @IBOutlet weak var tempLabelOutlet: UILabel!
+    
+    @IBOutlet weak var imageOutlet: UIImageView!
+    @IBOutlet weak var cityLabelOutlet: UILabel!
+    @IBOutlet weak var dateLabelOutlet: UILabel!
+    @IBOutlet weak var feelsLikeLabelOutlet: UILabel!
+    
     
     static func loadFromNIB() -> TableHeader {
         let nib = UINib(nibName: "TableHeader", bundle: nil)

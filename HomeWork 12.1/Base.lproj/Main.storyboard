@@ -34,14 +34,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-OB-qMd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-OB-qMd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26g-zL-2gT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nbf-OB-qMd" firstAttribute="bottom" secondItem="26g-zL-2gT" secondAttribute="bottom" id="IXg-9D-wux"/>
+                            <constraint firstItem="Nbf-OB-qMd" firstAttribute="trailing" secondItem="26g-zL-2gT" secondAttribute="trailing" id="RYD-zh-we6"/>
+                            <constraint firstItem="Nbf-OB-qMd" firstAttribute="top" secondItem="26g-zL-2gT" secondAttribute="top" id="Sgy-eF-rZk"/>
+                            <constraint firstItem="Nbf-OB-qMd" firstAttribute="leading" secondItem="26g-zL-2gT" secondAttribute="leading" id="fyA-VR-pUJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Погода с Alamofire" id="UOd-7f-a65"/>
                     <connections>

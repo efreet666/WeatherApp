@@ -67,7 +67,6 @@ import Foundation
         
         headerView.addSubview(imageView)
         headerView.addSubview(locationLabel)
-        headerView.addSubview(weatherLabel)
         headerView.addSubview(tempLabel)
         headerView.addSubview(windLabel)
         headerView.addSubview(feelsLikeLabel)
@@ -83,8 +82,7 @@ import Foundation
         windLabel.text = "Wind speed \(currentW.windSpeed!) m/s"
         
         
-        imageView.image = UIImage(named: "clouds") // \(currentW.weather!) optional value ?
-        
+        imageView.image = UIImage(named: "\(self.dailyW.first!.weather!)") // optional value
         
         locationLabel.text = "Moscow"
         weatherLabel.text = "\("clouds")"

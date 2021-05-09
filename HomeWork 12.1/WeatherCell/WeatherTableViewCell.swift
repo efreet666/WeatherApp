@@ -13,6 +13,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet var highTempLabel: UILabel!
     @IBOutlet var lowTempLabel: UILabel!
     @IBOutlet weak var iconImageView1: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,16 +37,35 @@ class WeatherTableViewCell: UITableViewCell {
         
         self.lowTempLabel.text = "\(Int((model.temp?.min)!)-271)°"
         self.highTempLabel.text = "\(Int((model.temp?.max)!)-271)°"
-        self.dayLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(model.dt!)))
+        self.dayLabel.text = getDate(Date(timeIntervalSince1970: Double(model.dt!)))
+        self.dateLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(model.dt!)))
+        
+        if self.dayLabel.text == "Saturday" || self.dayLabel.text == "Sunday"{
+            self.dayLabel.textColor = .red
+        } else {
+            self.dayLabel.textColor = .black
+        }
         self.iconImageView1.image = UIImage(named: "\(model.weather!.first!.main!)")
     }
-    func getDayForDate(_ date: Date?) -> String{
-        guard let inputDate = date else{
-            return""
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter.string(from: inputDate)
+    
+}
+
+func getDayForDate(_ date: Date?) -> String{
+    guard let inputDate = date else{
+        return""
     }
+    
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d MMMM"
+    return formatter.string(from: inputDate)
+}
+
+func getDate(_ date: Date?) -> String{
+    guard let inputDate = date else{
+        return""
+    }
+    
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE"
+    return formatter.string(from: inputDate)
 }
