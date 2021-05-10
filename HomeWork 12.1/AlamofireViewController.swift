@@ -18,11 +18,15 @@ class AlamofireViewController: UIViewController {
     var dailyW: [Daily] = []
     var currentW: Current!
     
+    var hourlyModel = [Current]() //
+    
+    
     let networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.hourlyModel = [hourlyW]
+    
         self.tableOutlet.dataSource = self
         self.tableOutlet.delegate = self
         self.tableOutlet.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherTableViewCell")
@@ -51,10 +55,22 @@ class AlamofireViewController: UIViewController {
 
 extension AlamofireViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            //1 cell that is collectionTableViewCell
+            return 1
+        }
         return dailyW.count
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if indexPath.section == 0 {
+//            let cell = tableOutlet.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier) as! HourlyTableViewCell
+//           cell.configure(with: hourlyModel[indexPath.row])
+//            return cell
+//        }
         let cell = tableOutlet.dequeueReusableCell(withIdentifier: "WeatherTableViewCell") as! WeatherTableViewCell
         cell.configure(with: dailyW[indexPath.row])
         return cell
