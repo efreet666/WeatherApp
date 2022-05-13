@@ -1,5 +1,5 @@
 # WeatherApp
 
-OpenWeatherApi
-JSON
+OpenWeatherApi,
+JSON,
 Alamofire
